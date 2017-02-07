@@ -1,19 +1,17 @@
-var mysql = require("mysql");
+//This is npm modules
+var Sequelize = require('sequelize');
 
-var connection = mysql.createConnection({
+//Create my SQL connection using sequelize
+//DO NOT FOR GET LAST ''!!!!! PASSWORD IS COME IN HERE IF I HAVE.
+var connection = new Sequelize("burgers_db", "root", "", {
   host: "localhost",
-  user: "root",
-  password: "",
-  database: "burgers_db"
-});
-
-
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
+  dialect: "mysql",
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
   }
-  console.log("connected as id " + connection.threadId);
 });
+
 
 module.exports = connection;

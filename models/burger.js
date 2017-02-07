@@ -1,24 +1,28 @@
-var orm = require("../config/orm.js");
+//npm module
+var Sequelize = require("sequelize");
+//require connection.js file
+var sequelize = require("../config/connection.js")
 
-var burger = {
-  all: function(cb) {
-    orm.all("burgers", function(res) {
-      cb(res);
-    });
+// Creates a "Burger" model that matches up with DB
+var Burger = sequelize.define("burgers", {
+  id: {
+    // capital "S"!! bcz it is create table use by npm sequelize
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
   },
-  create: function(name, cb) {
-    orm.create("burgers", [
-      "burger_name", "devoured"
-    ], [
-      name, false
-    ], cb);
+  burger_name: {
+    type: Sequelize.STRING
   },
-  update: function(id, cb) {
-    var condition = "id=" + id;
-    orm.update("burgers", {
-      devoured: true
-    }, condition, cb);
+  devoured: {
+    type: Sequelize.BOOLEAN
   }
-};
+});
 
-module.exports = burger;
+// Syncs with DB
+//IMPORTANT!!! ".sync()" makes automatically creates table for me
+//but have to create DB by my self before sync to db.
+Burger.sync();
+
+// Makes the Burger Model available for other files (will also create a table)
+module.exports = Burger;
