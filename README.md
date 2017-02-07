@@ -1,2 +1,2 @@
 # sequelizedBurger
-homework assinment: 15
+homework assignment: 15
