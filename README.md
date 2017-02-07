@@ -1,5 +1,7 @@
 # sequelizedBurger
 homework assignment: 15
+<br>
+<br>
 
 Type bacon cheese burger and press submit button
 <img width="1277" alt="screen shot 2017-02-07 at 16 57 04" src="https://cloud.githubusercontent.com/assets/20088084/22713477/9d3f556a-ed56-11e6-947a-1582e272d572.png">
